@@ -7,7 +7,7 @@ public class PlayerControler : MonoBehaviour
 {
     private Animator playerAnimator;
     private Rigidbody2D rbplayer;
-    [SerializeField] private float speed=3f;
+    [SerializeField] private float speed;
     private Vector2 moveInput;
 
     private GameObject gamemanager;
@@ -17,6 +17,7 @@ public class PlayerControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         rbplayer=GetComponent<Rigidbody2D>();
         playerAnimator=GetComponent<Animator>();
 
@@ -35,6 +36,10 @@ public class PlayerControler : MonoBehaviour
 
         playerAnimator.SetFloat("Horizontal",moveX);
         playerAnimator.SetFloat("Vertical",moveY);
+        if(moveX!=0 || moveY!=0){
+            playerAnimator.SetFloat("UltimoX",moveX);
+            playerAnimator.SetFloat("UltimoY",moveY);
+        }
         playerAnimator.SetFloat("speed",moveInput.sqrMagnitude);
     }
     private void FixedUpdate() {
@@ -49,4 +54,5 @@ public class PlayerControler : MonoBehaviour
             Invoke("HideMessage", 1);
         }
     }
+    
 }

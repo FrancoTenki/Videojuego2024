@@ -7,5 +7,5 @@ public class GameData
 {
     public long life=100;
     public long score=0;
-
+    public long mana=100;
 }
